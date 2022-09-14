@@ -1,22 +1,22 @@
 # RESTApi documentation
 
-
+# Base Url : https://evening-refuge-31987.herokuapp.com/
 
 ## Authentication endpoints
 https://evening-refuge-31987.herokuapp.com/api/auth
 
-1. https://evening-refuge-31987.herokuapp.com/api/auth/register   register an users in the website through the register page}
+1. https://evening-refuge-31987.herokuapp.com/api/auth/register   register a a clinet throught he register page}
     ## POST REQUEST
-    ### retuns a json with succes true is registers das well as the user information received as a response
+    ### retuns a json with succes true is registed as well as the user information received as a response
 
 2. https://evening-refuge-31987.herokuapp.com/api/auth/login
-   ## login an user thourhg the login page
    ## POST REQUEST 
    ### returns a js object with a success key set to true and the user informantion received as well as an json web access token which is valid for 3 days if login is successful else returns js object with success key set to false
 
 
 
-## User related route endpoints
+
+## User related endpoints
 https://evening-refuge-31987.herokuapp.com/api/users
 
 
@@ -34,7 +34,7 @@ https://evening-refuge-31987.herokuapp.com/api/users
 
 3.  https://evening-refuge-31987.herokuapp.com/api/users/:id
     ## DELETE REQUEST
-    ## only admin and the user itself
+    ## only admin has access to delete user
     ## send id of the user to delete
 
 4.  https://evening-refuge-31987.herokuapp.com/api/users/:id
@@ -42,12 +42,26 @@ https://evening-refuge-31987.herokuapp.com/api/users
     ## admin and the user itself and modify itself
     ## send id of the user to update
 
-# Product relsted endpoints
+5. https://evening-refuge-31987.herokuapp.com/api/users/changepass/pass
+   ## PUT REQUEST
+   ## routes accessible to the admin and the user itself
+   ## route for changing the password
+
+6. https://evening-refuge-31987.herokuapp.com/api/users/
+   ## GET
+   ## only accessible to the admin
+   ## gets a list of all the users registered with the store
+
+
+
+
+# Product related endpoints
 https://evening-refuge-31987.herokuapp.com/api/products
 
 1. https://evening-refuge-31987.herokuapp.com/api/products
   ## GET REQUEST
   ## get all products available in the store to display in the home page
+  ## Accessible to anybody weather logged in or not 
 
 2. https://evening-refuge-31987.herokuapp.com/api/products/:id
    ## GET REQUEST
@@ -68,7 +82,8 @@ https://evening-refuge-31987.herokuapp.com/api/products
 5. https://evening-refuge-31987.herokuapp.com/api/products/:id
     ## DELETE REQUEST
     ## only admin 
-    ## Delete a partcula product passs in the product id
+    ## Delete a partcular product by passing in the product id
+
 
 
 
@@ -77,17 +92,19 @@ https://evening-refuge-31987.herokuapp.com/api/carts
 
 1. https://evening-refuge-31987.herokuapp.com/api/carts
     ## POST REQUEST
-    ## any user has access
-    ## used to a dd items to a cart
+    ## only logged in user has acces to their cart
+    ## used to a add items to a cart by the client
 
 2. https://evening-refuge-31987.herokuapp.com/api/carts/:id
     ## DELETE REQUEST
     ## pass in the userid as a {param} in url
+    ## to delete cart item by the client
 
 3. https://evening-refuge-31987.herokuapp.com/api/carts/:id
     ## PUT REQUEST
     ## update cart
     ## pass in the userid as {param}
+    ## change cart items by the client 
 
 4. https://evening-refuge-31987.herokuapp.com/api/carts/:id
     ## GET REQUEST
@@ -99,17 +116,10 @@ https://evening-refuge-31987.herokuapp.com/api/carts
     ## ONLY ADMIN 
     ## get all carts of all users
 
+6. https://evening-refuge-31987.herokuapp.com/api/carts/:id
 
-
-## Order related endpoints
-https://evening-refuge-31987.herokuapp.com/api/orders
-
-1. https://evening-refuge-31987.herokuapp.com/api/orders
     ## POST REQUEST
-    ## create and order logged in user
-    ## calculate the total cosr in the cart and send in hte userId 
+    ## only logged in user has access to this
+    ## handles decrement against a cart item in the cart page
 
-
-
-## some more endpoints for admins will be provided later on
 
