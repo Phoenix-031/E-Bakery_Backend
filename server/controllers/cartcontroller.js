@@ -4,19 +4,48 @@ const Cart = require('../models/Cart');
 
 const createcart = async (req,res) =>{
 
+    console.log(req.body)
+    
     const findcart  =await Cart.findOne({"userId":req.body.userId})
     if(findcart){
 
-        const added = await Cart.findOneAndUpdate({"userId":req.body.userId},{
-            "$push": {
-                "products":req.body.products
-            }
-        },{new:true})
+        // console.log(findcart)
+        // console.log(findcart.products)
 
-        res.status(200).json({
-            success:true,
-            added
-        })
+        const exists = findcart.products.find(prod => prod.productId === req.body.products.productId)
+        // console.log(exists)
+
+        if(exists){
+            console.log(exists)
+
+            const added = await Cart.findOneAndUpdate({"userId":req.body.userId,'products.productId' :req.body.products.productId},{
+                "$set": {
+                    "products.$":{
+                        ...req.body.products,
+                        quantity:exists.quantity+ 1
+                    }
+                }
+            },{new:true})
+    
+            res.status(200).json({
+                success:true,
+                added
+            })
+
+        }else{
+
+            const added = await Cart.findOneAndUpdate({"userId":req.body.userId},{
+                "$push": {
+                    "products":req.body.products
+                }
+            },{new:true})
+    
+            res.status(200).json({
+                success:true,
+                added
+            })
+
+        }
     }
     else{
         const ncart = new Cart(req.body);
@@ -31,6 +60,53 @@ const createcart = async (req,res) =>{
             res.status(500).json({msg:err});
         }
 
+    }
+}
+const handledecrement = async (req,res) =>{
+
+    console.log(req.params.id)
+    
+    const findcart  =await Cart.findOne({"userId":req.body.userId})
+    console.log(findcart)
+    if(findcart){
+
+        // console.log(findcart)
+        // console.log(findcart.products)
+
+        const exists = findcart.products.find(prod => prod.productId === req.body.productId)
+        // console.log(exists)
+
+        if(exists){
+            console.log(exists)
+
+            const added = await Cart.findOneAndUpdate({"userId":req.body.userId,'products.productId' :req.body.productId},{
+                "$set": {
+                    "products.$":{
+                        ...req.body,
+                        quantity:exists.quantity- 1
+                    }
+                }
+            },{new:true})
+    
+            res.status(200).json({
+                success:true,
+                added
+            })
+
+        }else{
+
+            const added = await Cart.findOneAndUpdate({"userId":req.body.userId},{
+                "$push": {
+                    "products":req.body.products
+                }
+            },{new:true})
+    
+            res.status(200).json({
+                success:true,
+                added
+            })
+
+        }
     }
 }
 
@@ -110,4 +186,4 @@ const getallCarts = async (req,res)=>{
 }
 
 
-module.exports = {createcart,updateCart,deleteCart,getCart,getallCarts};
+module.exports = {createcart,updateCart,deleteCart,getCart,getallCarts,handledecrement};
