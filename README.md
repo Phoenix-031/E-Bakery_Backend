@@ -1,15 +1,15 @@
 # RESTApi documentation
 
-# Base Url : https://evening-refuge-31987.herokuapp.com/
+# Base Url : https://kind-blue-penguin-boot.cyclic.app/
 
 ## Authentication endpoints
-https://evening-refuge-31987.herokuapp.com/api/auth
+https://kind-blue-penguin-boot.cyclic.app/api/auth
 
-1. https://evening-refuge-31987.herokuapp.com/api/auth/register   register a a clinet throught he register page}
+1. https://kind-blue-penguin-boot.cyclic.app/auth/register   register a a clinet throught he register page}
     ## POST REQUEST
     ### retuns a json with succes true is registed as well as the user information received as a response
 
-2. https://evening-refuge-31987.herokuapp.com/api/auth/login
+2. https://kind-blue-penguin-boot.cyclic.app/auth/login
    ## POST REQUEST 
    ### returns a js object with a success key set to true and the user informantion received as well as an json web access token which is valid for 3 days if login is successful else returns js object with success key set to false
 
@@ -17,7 +17,7 @@ https://evening-refuge-31987.herokuapp.com/api/auth
 
 
 ## User related endpoints
-https://evening-refuge-31987.herokuapp.com/api/users
+https://kind-blue-penguin-boot.cyclic.app/users
 
 
 1.  https://evening-refuge-31987.herokuapp.com/api/users/:id
