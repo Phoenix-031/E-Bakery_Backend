@@ -18,7 +18,7 @@ const app = express();
 
 let instance = new Razorpay({               
     key_id: process.env.RZPAY_ID, // your `KEY_ID`
-    key_secret: process.evn.RZPAY_SEC// your `KEY_SECRET`
+    key_secret: process.env.RZPAY_SEC// your `KEY_SECRET`
   })
 
 

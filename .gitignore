@@ -3,6 +3,7 @@
 .pnp.js
 node_modules
 .env
+config.env
 
 
 .DS_Store
