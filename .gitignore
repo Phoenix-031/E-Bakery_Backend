@@ -1,8 +1,6 @@
 
 /.pnp
 .pnp.js
-config
-/config
 node_modules
 .env
 
