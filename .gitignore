@@ -4,6 +4,7 @@
 config
 /config
 node_modules
+.env
 
 
 .DS_Store
